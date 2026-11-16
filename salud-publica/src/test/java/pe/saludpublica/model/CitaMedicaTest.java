@@ -58,4 +58,11 @@ class CitaMedicaTest {
 
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+    @Test
+    @DisplayName("CIT-007: Conservar el estado recibido cuando es valido")
+    void shouldKeepStatusWhenValid() {
+        CitaMedica cita = new CitaMedica("pac-1", "doc-1", "esp-1", FECHA, "Control general", EstadoCita.ATENDIDA);
+
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
 }
