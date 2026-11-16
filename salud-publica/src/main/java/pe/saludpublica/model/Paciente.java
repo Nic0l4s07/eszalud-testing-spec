@@ -9,20 +9,18 @@ public class Paciente {
     private final String correo;
 
     public Paciente(String documento, String nombres, String apellidos, String telefono, String correo) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El documento es obligatorio");
-        }
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres son obligatorios");
-        }
-        if (apellidos == null) {
-            throw new IllegalArgumentException("Los apellidos son obligatorios");
-        }
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
+        this.documento = requireNotNull(documento, "El documento es obligatorio");
+        this.nombres = requireNotNull(nombres, "Los nombres son obligatorios");
+        this.apellidos = requireNotNull(apellidos, "Los apellidos son obligatorios");
         this.telefono = telefono;
         this.correo = correo;
+    }
+
+    private static String requireNotNull(String value, String message) {
+        if (value == null) {
+            throw new IllegalArgumentException(message);
+        }
+        return value;
     }
 
     public String getDocumento() {
