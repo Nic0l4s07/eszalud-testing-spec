@@ -25,4 +25,14 @@ class EspecialidadTest {
         assertThrows(IllegalArgumentException.class,
             () -> new Especialidad(null, "Especialidad del corazón"));
     }
+    @Test
+    @DisplayName("ESP-003: Verificar los atributos de la especialidad mediante sus getters")
+    void shouldReturnAllAttributesThroughGetters() {
+        Especialidad especialidad = new Especialidad("Pediatría", "Atención médica infantil");
+
+        assertAll(
+            () -> assertEquals("Pediatría", especialidad.getNombre()),
+            () -> assertEquals("Atención médica infantil", especialidad.getDescripcion())
+        );
+    }
 }
