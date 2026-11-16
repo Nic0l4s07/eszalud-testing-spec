@@ -46,4 +46,17 @@ class DoctorTest {
         assertThrows(IllegalArgumentException.class,
             () -> new Doctor("40123456", "Carlos", "Ruiz", null, "esp-cardiologia"));
     }
+    @Test
+    @DisplayName("DOC-006: Verificar los atributos del doctor mediante sus getters")
+    void shouldReturnAllAttributesThroughGetters() {
+        Doctor doctor = new Doctor("50987654", "María", "Salas", "CMP67890", "esp-pediatria");
+
+        assertAll(
+            () -> assertEquals("50987654", doctor.getDocumento()),
+            () -> assertEquals("María", doctor.getNombres()),
+            () -> assertEquals("Salas", doctor.getApellidos()),
+            () -> assertEquals("CMP67890", doctor.getColegiatura()),
+            () -> assertEquals("esp-pediatria", doctor.getEspecialidad())
+        );
+    }
 }
