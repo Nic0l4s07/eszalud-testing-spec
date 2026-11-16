@@ -51,4 +51,11 @@ class CitaMedicaTest {
         assertThrows(IllegalArgumentException.class,
             () -> new CitaMedica("pac-1", "doc-1", "esp-1", null, "Control general", EstadoCita.PROGRAMADA));
     }
+    @Test
+    @DisplayName("CIT-006: Asignar PROGRAMADA por defecto cuando el estado es null")
+    void shouldAssignProgramadaWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica("pac-1", "doc-1", "esp-1", FECHA, "Control general", null);
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
