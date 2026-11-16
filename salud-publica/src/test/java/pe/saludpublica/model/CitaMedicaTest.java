@@ -65,4 +65,18 @@ class CitaMedicaTest {
 
         assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
     }
+    @Test
+    @DisplayName("CIT-008: Verificar los atributos de la cita mediante sus getters")
+    void shouldReturnAllAttributesThroughGetters() {
+        CitaMedica cita = new CitaMedica("pac-9", "doc-9", "esp-9", FECHA, "Chequeo anual", EstadoCita.CANCELADA);
+
+        assertAll(
+            () -> assertEquals("pac-9", cita.getPaciente()),
+            () -> assertEquals("doc-9", cita.getDoctor()),
+            () -> assertEquals("esp-9", cita.getEspecialidad()),
+            () -> assertEquals(FECHA, cita.getFechaHora()),
+            () -> assertEquals("Chequeo anual", cita.getMotivo()),
+            () -> assertEquals(EstadoCita.CANCELADA, cita.getEstado())
+        );
+    }
 }
