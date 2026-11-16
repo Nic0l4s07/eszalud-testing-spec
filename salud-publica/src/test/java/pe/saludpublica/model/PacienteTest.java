@@ -42,4 +42,17 @@ class PacienteTest {
         assertThrows(IllegalArgumentException.class,
             () -> new Paciente("12345678", "Ana", null, "987654321", "ana@mail.com"));
     }
+    @Test
+    @DisplayName("PAC-005: Verificar los atributos del paciente mediante sus getters")
+    void shouldReturnAllAttributesThroughGetters() {
+        Paciente paciente = new Paciente("87654321", "Luis", "Gómez", "999888777", "luis@mail.com");
+
+        assertAll(
+            () -> assertEquals("87654321", paciente.getDocumento()),
+            () -> assertEquals("Luis", paciente.getNombres()),
+            () -> assertEquals("Gómez", paciente.getApellidos()),
+            () -> assertEquals("999888777", paciente.getTelefono()),
+            () -> assertEquals("luis@mail.com", paciente.getCorreo())
+        );
+    }
 }
