@@ -1,5 +1,6 @@
 package pe.saludpublica.model;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -27,5 +28,12 @@ class PacienteTest {
     void shouldRejectPatientWithoutDocument() {
         assertThrows(IllegalArgumentException.class,
             () -> new Paciente(null, "Ana", "Pérez", "987654321", "ana@mail.com"));
+    }
+
+    @Test
+    @DisplayName("PAC-003: Rechazar la creación de un paciente sin nombres")
+    void shouldRejectPatientWithoutFirstName() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Paciente("12345678", null, "Pérez", "987654321", "ana@mail.com"));
     }
 }
