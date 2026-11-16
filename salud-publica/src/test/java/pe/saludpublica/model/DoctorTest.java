@@ -34,4 +34,10 @@ class DoctorTest {
         assertThrows(IllegalArgumentException.class,
             () -> new Doctor("40123456", null, "Ruiz", "CMP12345", "esp-cardiologia"));
     }
+    @Test
+    @DisplayName("DOC-004: Rechazar la creación de un doctor sin apellidos")
+    void shouldRejectDoctorWithoutLastName() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Doctor("40123456", "Carlos", null, "CMP12345", "esp-cardiologia"));
+    }
 }
